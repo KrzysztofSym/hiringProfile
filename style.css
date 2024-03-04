@@ -11,17 +11,16 @@
     --a-fs: .7rem;    --a-fs-media: 1.1rem;
     --li-fs: .7rem;   --li-fs-media: 1.1rem;    
 
-    --clr-bg-main: #36454F;
-    --clr-bg-pri: #67696a;
-    --clr-bg-sec: #f3fafa;
+    --clr-bg-main: #3a5290;
+    --clr-bg-pri: #15939f;
+    --clr-bg-sec: #effafb;
     --clr-acc-main: #00bea6;
-    --clr-acc-pri: #009885;
-    --clr-acc-sec: #33cbb8;
-    --clr-acc-thi: #d80000;
+    --clr-acc-pri: #3c4f90;
+    --clr-acc-sec: #3c4f90;
+    --clr-acc-thi: #bdebe9;
     --clr-acc-four: #ad0000;
     --clr-acc-fif: #e03333;
     --clr-text-main: #67696a;
-    --clr-text-main: #eee;
     --clr-text-pri: #36454F;  
     
     --shadow-color: #33cbb8;    
@@ -45,7 +44,7 @@ html {
 body {
     font-family: var(--main-ff);
     font-size: var(--p-fs);
-    background: var(--clr-bg-main);
+    background: linear-gradient(var(--clr-bg-main), var(--clr-bg-pri));
     color: var(--clr-text-main);
     width: 100%;
     min-height: 100vh;
@@ -110,19 +109,22 @@ img {
 
 .btn {
     display: inline-block;
-    background-color:  #fff;
-    color: var(--clr-text-main);
-    padding: .5rem 1.5rem;
+    background-color:  var(--clr-acc-thi);
+    color: var(--clr-acc-pri);
+
+    padding: 1.5rem;
+    width: 100%;
     font-weight: 600;
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     cursor: pointer;
     white-space: nowrap;
     transition: .2s;
 }
   
 .btn:hover {
-    box-shadow: 0 10px 36px rgba(0, 0, 0, .15);
+    background-color: var(--clr-acc-main);
+    color: #fff;
 }
 
 .btn:active {
@@ -138,13 +140,15 @@ body {
 }
 
 .container {
-    max-width: 450px;
+    margin: 1rem;
+    max-width: 400px;
     width: 90%;
-    background-color: var(--clr-bg-pri);
+    background-color: #fff;
     position: relative;
     animation: scaleUp 1s ease-in-out;
     transform-origin: center center;
     box-shadow: 0px 8px 30px -10px var(--clr-acc-sec);
+    text-align: center;
 }
 
 .icons {
@@ -153,9 +157,43 @@ body {
     align-items: center;
 }
 
+.icons i {
+    margin: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+header {
+    background-image: url("https://www.svinoya.no/img/ARTIKLER/Vinter-i-Lofoten/DSC_6294.jpg");
+    position: relative;
+    color: #fff;
+}
+
+header h2 {
+    padding-bottom: 4rem;
+}
+
+header img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: 3px solid var(--clr-acc-main);
+    object-fit: cover;
+    transform: translate(-50%, 50%);
+}
+
 .main {
-    padding: 2rem;
-    text-align: center;
+    padding: 0 2rem;
+}
+
+.container > p {
+    padding: 4rem 2rem 1.3rem;
+    border-bottom: 2px solid lightgray;
+    background-color: var(--clr-bg-sec);
+    color: var(--clr-acc-pri);
 }
 
 .main nav ul {
@@ -164,16 +202,29 @@ body {
 }
 
 .main nav ul li {
-    padding: .5rem 0;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: .3s;
 }
+
+.main nav ul li:hover {
+    background-color: var(--clr-bg-sec);
+    color: var(--clr-acc-pri);
+}
+
 .skills {
     position: relative;
+    margin: 1rem 0 2rem;
+}
+
+.skill {
     margin: 1rem 0;
+    text-align: left;
 }
 
 .lineBar {
     position: relative;
-    margin-top: 24px;
+    margin-top: .5rem;
     width: 100%;
     left: 0;
     height: 24px;
@@ -185,15 +236,38 @@ body {
 .lineBox {
     width: 100%;
     height: 24px;
-    background-color: var(--clr-bg-main);
+    background-color: var(--clr-acc-thi);
     border-radius: 20px;
     overflow: hidden;
 }
 
 .line {
-    width: 30%;
+    width: 0;
     height: 100%;
-    border-radius: .5rem;
-    background:linear-gradient(to right, var(--clr-acc-pri), var(--clr-acc-fif));
-    /* animation: loading 1s forwards cubic-bezier(0,0,0,0); */
+    background:linear-gradient(to right, var(--clr-acc-pri), var(--clr-acc-main));
+    background-size: 300px 100%;
+    animation: loading1 .65s forwards cubic-bezier(0,0,0,0) 1s;
+}
+
+.skill:nth-child(2) .line {
+    animation: loading2 .8s forwards cubic-bezier(0,0,0,0) 1.65s;
+}
+
+.skill:nth-child(3) .line {
+    animation: loading3 .4s forwards cubic-bezier(0,0,0,0) 2.45s;
+}
+
+@keyframes loading1 {
+    0% {width: 0%;}
+    100% {width: 65%;}
+}
+
+@keyframes loading2 {
+    0% {width: 0%;}
+    100% {width: 80%;}
+}
+
+@keyframes loading3 {
+    0% {width: 0%;}
+    100% {width: 40%;}
 }
